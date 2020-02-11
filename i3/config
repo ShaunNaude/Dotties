@@ -17,6 +17,8 @@
 #
 set $mod Mod1
 
+exec_always --no-startup-id /home/shaun/.config/layout/alternating_layouts.py
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:System San Francisco Display 11
@@ -168,6 +170,7 @@ bindsym $mod+plus gaps inner current plus 6
 
 new_window pixel 0
 smart_borders on
+default_border pixel 0
 
 
 # reload the configuration file
@@ -209,7 +212,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 
 #wallpaper
-exec_always feh --bg-scale /home/shaun/Pictures/wal/arch1.jpg
+exec_always feh --bg-scale /home/shaun/Pictures/wal/mountains-3.jpg
 
 #colors #basic dark color scheme for i3bar and windows
 
@@ -219,12 +222,15 @@ set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
+set $balck 		 #000000
+set $white		 #ffffff
+
 # window colors
-#                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00ff00
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+#                       border             background          text                 indicator
+client.focused          $bg-colour         $inactive-bg-color          	$text-color          #00ff00
+client.unfocused        $inactive-bg-color $inactive-bg-color	$inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color $inactive-bg-color 	$inactive-text-color #00ff00
+client.urgent           $urgent-bg-color   $urgent-bg-color     $text-color          #00ff00
 
 hide_edge_borders both
 
@@ -240,7 +246,7 @@ bar {
 	}
 }
 
-exec_always compton -f
+exec_always picom -b
 exec_always termite -e 'sudo cpupower frequency-set -g performance' #install the cpupower package for this to work
 exec_always termite -e 'sudo cpupower frequency-set -d 2.4GHz'
 exec_always termite -e 'killall nm-applet' 
@@ -249,6 +255,8 @@ bindsym $mod+m exec termite -e cmus
 
 ##########################screen_swap_script############
 bindsym $mod+Shift+s exec --no-startup-id /home/shaun/.config/screenSwap/swap
+
+#bindsym $mod+Shift+k termite -e 'sudo systemctl suspend'
 
 #->essentially what this script does is it will allow you to plug an HDMI cable into your laptop 
 #  and it will change between (internal display,external diplay,both,), i linked it to $mod+Shift+s
