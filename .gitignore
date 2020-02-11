@@ -1,0 +1,12 @@
+# Ignore everything:
+*/
+*
+
+
+#Dont ignore 
+!i3/
+!picom/
+!termite/
+!screenSwap/
+!layout/
+!.gitignore
