@@ -249,7 +249,8 @@ bar {
 exec_always picom -b
 exec_always termite -e 'sudo cpupower frequency-set -g performance' #install the cpupower package for this to work
 exec_always termite -e 'sudo cpupower frequency-set -d 2.4GHz'
-exec_always termite -e 'killall nm-applet' 
+exec_always termite -e 'killall nm-applet'
+exec -e 'sudo pacman -Syy' 
 bindsym $mod+t exec thunar
 bindsym $mod+m exec termite -e cmus
 
